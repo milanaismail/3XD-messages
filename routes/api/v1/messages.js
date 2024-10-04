@@ -3,7 +3,7 @@ const router = express.Router(); // router functie
 
 // GET /api/v1/messages
 router.get('/', (req, res) => {
-  res.json({
+  res.status(200).json({
     status: 'success',
     message: 'Hello, World!',
     data: {
