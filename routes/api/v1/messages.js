@@ -20,7 +20,17 @@ router.get('/', (req, res) => {
   });
 });
 
-
+//get with id
+router.get('/:id', (req, res) => {
+  const id = req.params.id;
+  res.status(200).json({
+    status: 'success',
+    message: `Message ${id} updated!`,
+    data: {
+      message: 'Hello, World!'
+    }
+  });
+});
 
 // POST /api/v1/messages 
 router.post('/', (req, res) => {
@@ -60,6 +70,16 @@ router.get('/:username', (req, res) => {
     data: {
       message: 'Hello, World!'
     }
+  });
+});
+
+// DELETE /api/v1/messages/:id
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  messages.splice(id, 1);
+  res.status(204).json({
+    status: 'success',
+    message: `Message ${id} deleted!`
   });
 });
 
