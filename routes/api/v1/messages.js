@@ -20,17 +20,6 @@ router.get('/', (req, res) => {
   });
 });
 
-//get with id
-router.get('/:id', (req, res) => {
-  res.status(200).json({
-    status: 'success',
-    message: 'Hello, World user 1!',
-    data: {
-      message: 'Hello, World!'
-    }
-  });
-});
-
 
 
 // POST /api/v1/messages 
@@ -61,6 +50,18 @@ router.put('/:id', (req, res) => {
   });
 }
 );
+
+// get with req.params.username
+router.get('/:username', (req, res) => {
+  const user = req.params.username;
+  res.status(200).json({
+    status: 'success',
+    message: `Message ${user} updated!`,
+    data: {
+      message: 'Hello, World!'
+    }
+  });
+});
 
 
 module.exports = router; // exporteren van router
