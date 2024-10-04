@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
 
 
 
-// POST /api/v1/messages
+// POST /api/v1/messages 
 router.post('/', (req, res) => {
   const message = req.body.message;
   messages.push(message);
@@ -46,7 +46,21 @@ router.post('/', (req, res) => {
   });
 });
 
+// PUT /api/v1/messages/:id
 
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  const message = req.body.message;
+  messages[id] = message;
+  res.status(200).json({
+    status: 'success',
+    message: `Message ${id} updated!`,
+    data: {
+      message: message
+    }
+  });
+}
+);
 
 
 module.exports = router; // exporteren van router
